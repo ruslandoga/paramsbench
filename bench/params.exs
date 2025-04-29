@@ -16,6 +16,20 @@ open_api_spex_schema = %OpenApiSpex.Schema{
 
 Benchee.run(
   %{
+    "manual" => fn input ->
+      Enum.each(1..10000, fn _ ->
+        %{a: a, b: b} = input
+
+        with true <- is_integer(a),
+             true <- is_integer(b),
+             c = Map.get(input, :c),
+             true <- is_integer(c) or is_nil(c) do
+          %{a: a, b: b, c: c}
+        else
+          _ -> raise "Invalid input"
+        end
+      end)
+    end,
     "ecto_changeset" => fn input ->
       Enum.each(1..10000, fn _ ->
         Ecto.Changeset.cast({%{}, %{a: :integer, b: :integer, c: :integer}}, input, [:a, :b, :c])
