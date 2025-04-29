@@ -1,0 +1,283 @@
+$ env MIX_ENV=bench mix run bench/params.exs
+Operating System: macOS
+CPU Information: Apple M2
+Number of Available Cores: 8
+Available memory: 8 GB
+Elixir 1.18.3
+Erlang 27.3.1
+JIT enabled: true
+
+Benchmark suite executing with the following configuration:
+warmup: 2 s
+time: 5 s
+memory time: 0 ns
+reduction time: 0 ns
+parallel: 1
+inputs: ints
+Estimated total run time: 21 s
+
+Benchmarking ecto_changeset with input ints ...
+Benchmarking nimble_options with input ints ...
+Benchmarking open_api_spex with input ints ...
+Calculating statistics...
+Formatting results...
+
+##### With input ints #####
+Name                     ips        average  deviation         median         99th %
+nimble_options        312.02        3.20 ms     ±4.17%        3.16 ms        3.86 ms
+ecto_changeset        148.55        6.73 ms     ±9.58%        6.52 ms       10.20 ms
+open_api_spex          57.94       17.26 ms     ±3.94%       17.45 ms       18.26 ms
+
+Comparison: 
+nimble_options        312.02
+ecto_changeset        148.55 - 2.10x slower +3.53 ms
+open_api_spex          57.94 - 5.39x slower +14.05 ms
+
+Profiling nimble_options with tprof...
+
+Profile results of #PID<0.195.0>
+#                                                                  CALLS      %  TIME µS/CALL
+Total                                                            1115090 100.00 71069    0.06
+Benchee.Benchmark.BenchmarkConfig.__struct__/1                         1   0.00     0    0.00
+Benchee.Benchmark.BenchmarkConfig.from/1                               1   0.00     0    0.00
+:maps.fold/3                                                           1   0.00     0    0.00
+:maps.iterator/1                                                       1   0.00     0    0.00
+:maps.iterator/2                                                       1   0.00     0    0.00
+:maps.next/1                                                           1   0.00     0    0.00
+:maps.try_next/2                                                      12   0.00     0    0.00
+anonymous fn/2 in :elixir_compiler_2.__FILE__/1                        1   0.00     0    0.00
+Kernel.struct!/2                                                       1   0.00     0    0.00
+Kernel.validate_struct!/3                                              1   0.00     0    0.00
+Benchee.Benchmark.Hooks.run_after_scenario/2                           1   0.00     0    0.00
+Benchee.Benchmark.Hooks.run_before_each/2                              1   0.00     0    0.00
+Benchee.Benchmark.Hooks.run_before_function/2                          4   0.00     0    0.00
+Benchee.Benchmark.Hooks.run_before_scenario/2                          1   0.00     0    0.00
+Benchee.Benchmark.Runner.collect_return_value/2                        1   0.00     0    0.00
+Benchee.Benchmark.Runner.main_function/2                               1   0.00     0    0.00
+Benchee.Benchmark.Runner.run_once/2                                    1   0.00     0    0.00
+anonymous fn/2 in Benchee.Benchmark.Runner.main_function/2             1   0.00     0    0.00
+Enum.each/2                                                            1   0.00     0    0.00
+Enum.reduce/3                                                          1   0.00     0    0.00
+anonymous fn/4 in Enum.reduce/3                                       12   0.00     0    0.00
+anonymous fn/2 in Benchee.Profile.run/4                                1   0.00     0    0.00
+Map.take/2                                                             1   0.00     0    0.00
+anonymous fn/2 in Benchee.Benchmark.BenchmarkConfig.__struct__/1      12   0.00     1    0.08
+:maps.fold_1/4                                                        13   0.00     1    0.08
+Map.take/3                                                            13   0.00     1    0.08
+Benchee.Benchmark.Hooks.run_after_each/3                               1   0.01     9    9.00
+Enumerable.impl_for/1                                              10000   0.47   331    0.03
+NimbleOptions.validate_options_with_schema/2                       10000   0.47   335    0.03
+NimbleOptions.validate/2                                           10000   0.48   341    0.03
+anonymous fn/3 in :elixir_compiler_2.__FILE__/1                    10000   0.49   347    0.03
+:maps.to_list_internal/1                                           10000   0.50   353    0.04
+:erts_internal.map_next/3                                          10001   0.57   404    0.04
+Enum.reduce_range/5                                                 5001   0.72   513    0.10
+:maps.from_list/1                                                  10001   0.73   522    0.05
+:erlang.--/2                                                       10000   0.91   645    0.06
+:maps.to_list/1                                                    10000   0.94   670    0.07
+anonymous fn/3 in Enum.each/2                                      10000   0.98   695    0.07
+Enum.reduce_while/3                                                10000   0.99   703    0.07
+Map.new/1                                                          10000   0.99   705    0.07
+Enumerable.impl_for!/1                                             10000   1.00   709    0.07
+NimbleOptions.validate_options/2                                   10000   1.00   709    0.07
+NimbleOptions.expand_star_to_option_keys/2                         10000   1.01   716    0.07
+Enumerable.reduce/3                                                10000   1.06   754    0.08
+anonymous fn/2 in NimbleOptions.reduce_options/2                   30000   1.43  1014    0.03
+Keyword.update/4                                                   30000   1.47  1046    0.03
+Keyword.get/2                                                      30000   1.48  1049    0.03
+NimbleOptions.validate_type/3                                      30000   1.52  1079    0.04
+NimbleOptions.validate_unknown_options/2                           10000   1.90  1353    0.14
+Keyword.keys/1                                                     20000   1.99  1412    0.07
+anonymous fn/1 in Keyword.keys/1                                   60000   2.79  1984    0.03
+Keyword.has_key?/2                                                 30000   2.97  2112    0.07
+Keyword.get/3                                                      30000   3.01  2138    0.07
+Enumerable.List.reduce/3                                           40000   3.40  2419    0.06
+NimbleOptions.validate_options_with_schema_and_path/3              20000   3.81  2710    0.14
+:lists.keymember/3                                                 60000   3.92  2785    0.05
+NimbleOptions.reduce_options/2                                     30000   4.44  3155    0.11
+Access.get/2                                                      100000   4.88  3466    0.03
+NimbleOptions.validate_value/3                                     30000   5.82  4133    0.14
+NimbleOptions.validate_option/3                                    30000   7.13  5067    0.17
+Keyword.update_guarded/4                                           60000   7.39  5252    0.09
+:lists.keyfind/3                                                  130000   7.85  5576    0.04
+Keyword."-keys/1-lists^map/1-0-"/2                                 80000   9.59  6812    0.09
+Access.get/3                                                      100000   9.91  7043    0.07
+
+Profile done over 64 matching functions
+
+Profiling ecto_changeset with tprof...
+
+Profile results of #PID<0.197.0>
+#                                                                  CALLS      %  TIME µS/CALL
+Total                                                            1555090 100.00 95994    0.06
+Benchee.Benchmark.BenchmarkConfig.__struct__/1                         1   0.00     0    0.00
+Benchee.Benchmark.BenchmarkConfig.from/1                               1   0.00     0    0.00
+anonymous fn/2 in Benchee.Benchmark.BenchmarkConfig.__struct__/1      12   0.00     0    0.00
+anonymous fn/1 in :elixir_compiler_2.__FILE__/1                        1   0.00     0    0.00
+Kernel.struct!/2                                                       1   0.00     0    0.00
+Kernel.validate_struct!/3                                              1   0.00     0    0.00
+Benchee.Benchmark.Hooks.run_after_each/3                               1   0.00     0    0.00
+Benchee.Benchmark.Hooks.run_after_scenario/2                           1   0.00     0    0.00
+Benchee.Benchmark.Hooks.run_before_each/2                              1   0.00     0    0.00
+Benchee.Benchmark.Hooks.run_before_function/2                          4   0.00     0    0.00
+Benchee.Benchmark.Runner.collect_return_value/2                        1   0.00     0    0.00
+Benchee.Benchmark.Runner.main_function/2                               1   0.00     0    0.00
+Benchee.Benchmark.Runner.run_once/2                                    1   0.00     0    0.00
+anonymous fn/2 in Benchee.Benchmark.Runner.main_function/2             1   0.00     0    0.00
+Enum.each/2                                                            1   0.00     0    0.00
+Map.take/2                                                             1   0.00     0    0.00
+Benchee.Benchmark.Hooks.run_before_scenario/2                          1   0.00     1    1.00
+anonymous fn/2 in Benchee.Profile.run/4                                1   0.00     1    1.00
+Map.take/3                                                            13   0.00     1    0.08
+Ecto.Changeset.cast/3                                              10000   0.36   344    0.03
+Ecto.Changeset.validate_required/2                                 10000   0.36   348    0.03
+Enum.reverse/1                                                     10000   0.37   357    0.04
+Ecto.Changeset.cast/4                                              10000   0.38   365    0.04
+List.wrap/1                                                        10000   0.40   381    0.04
+:lists.reverse/2                                                   10000   0.41   394    0.04
+Ecto.Changeset.apply_changes/1                                     10000   0.45   430    0.04
+:erlang.++/2                                                       10000   0.48   464    0.05
+Enum.reduce_range/5                                                 5001   0.53   509    0.10
+anonymous fn/3 in Enum.each/2                                      10000   0.72   695    0.07
+Ecto.Changeset.get_field/2                                         20000   0.74   709    0.04
+Ecto.Changeset.apply_action!/2                                     10000   0.75   716    0.07
+Ecto.Changeset.apply_action/2                                      10000   0.79   763    0.08
+Ecto.Changeset.ensure_field_not_many!/2                            20000   0.88   843    0.04
+Ecto.Changeset.get_field/3                                         20000   0.90   863    0.04
+Ecto.Changeset.change_as_field/3                                   20000   0.94   902    0.05
+:maps.from_list/1                                                  10001   0.99   955    0.10
+Map.get/3                                                          30000   1.01   969    0.03
+Ecto.Type.empty_trimmed_string?/1                                  30000   1.04   994    0.03
+Ecto.Type.cast_fun/1                                               30000   1.04   995    0.03
+Ecto.Type.cast_integer/1                                           30000   1.05  1012    0.03
+Ecto.Type.equal_fun/1                                              30000   1.06  1019    0.03
+:maps.iterator/1                                                   30001   1.08  1034    0.03
+anonymous fn/2 in :elixir_compiler_2.__FILE__/1                    10000   1.08  1038    0.10
+:maps.iterator/2                                                   30001   1.09  1046    0.03
+anonymous fn/9 in Ecto.Changeset.cast/6                            30000   1.09  1047    0.03
+Ecto.Changeset.filter_empty_values/3                               30000   1.09  1050    0.04
+Map.get/2                                                          30000   1.11  1064    0.04
+:lists.reverse/1                                                   20000   1.11  1069    0.05
+:lists.keyfind/3                                                   30000   1.21  1157    0.04
+Ecto.Changeset.cast_type!/2                                        30000   1.26  1208    0.04
+:erts_internal.map_next/3                                          30001   1.40  1344    0.04
+anonymous fn/4 in Ecto.Changeset.validate_required/3               20000   1.46  1397    0.07
+Ecto.Changeset.missing?/2                                          20000   1.54  1476    0.07
+:maps.find/2                                                       30000   1.55  1491    0.05
+Enum.reduce/3                                                      40001   1.59  1525    0.04
+Ecto.Changeset.validate_required/3                                 10000   1.97  1892    0.19
+:maps.fold/3                                                       20001   2.08  1996    0.10
+Ecto.Changeset.convert_params/1                                    10000   2.11  2022    0.20
+Ecto.Type.cast/2                                                   30000   2.11  2030    0.07
+Ecto.Changeset.cast_key/1                                          30000   2.22  2129    0.07
+anonymous fn/4 in Enum.reduce/3                                    60012   2.22  2134    0.04
+:maps.next/1                                                       30001   2.23  2138    0.07
+anonymous fn/3 in Ecto.Changeset.convert_params/1                  30000   2.23  2142    0.07
+Ecto.Changeset.field_missing?/2                                    20000   2.26  2172    0.11
+Ecto.Changeset.filter_empty_values/5                               30000   2.28  2193    0.07
+Keyword.get/3                                                      30000   2.30  2208    0.07
+:maps.try_next/2                                                   60012   2.30  2209    0.04
+Ecto.Changeset.cast/6                                              10000   2.56  2457    0.25
+Ecto.Type.equal?/3                                                 30000   2.57  2464    0.08
+:erlang.atom_to_binary/2                                           60000   2.60  2497    0.04
+anonymous fn/3 in Ecto.Changeset.apply_changes/1                   30000   2.63  2523    0.08
+Ecto.Changeset.filter_empty_value/2                                60000   3.18  3056    0.05
+Enum."-reduce/3-lists^foldl/2-0-"/3                                70000   4.38  4201    0.06
+:erlang.atom_to_binary/1                                           60000   4.58  4396    0.07
+Ecto.Changeset.cast_field/9                                        30000   4.87  4676    0.16
+Ecto.Changeset.process_param/9                                     30000   5.90  5667    0.19
+:maps.fold_1/4                                                     80013   7.10  6816    0.09
+
+Profile done over 77 matching functions
+
+Profiling open_api_spex with tprof...
+
+Profile results of #PID<0.199.0>
+#                                                                                  CALLS      %   TIME µS/CALL
+Total                                                                            2105090 100.00 127541    0.06
+Benchee.Benchmark.BenchmarkConfig.__struct__/1                                         1   0.00      0    0.00
+:maps.from_list/1                                                                      1   0.00      0    0.00
+anonymous fn/1 in :elixir_compiler_2.__FILE__/1                                        1   0.00      0    0.00
+Kernel.struct!/2                                                                       1   0.00      0    0.00
+Kernel.validate_struct!/3                                                              1   0.00      0    0.00
+Benchee.Benchmark.Hooks.run_after_each/3                                               1   0.00      0    0.00
+Benchee.Benchmark.Hooks.run_after_scenario/2                                           1   0.00      0    0.00
+Benchee.Benchmark.Hooks.run_before_each/2                                              1   0.00      0    0.00
+Benchee.Benchmark.Hooks.run_before_function/2                                          4   0.00      0    0.00
+Benchee.Benchmark.Hooks.run_before_scenario/2                                          1   0.00      0    0.00
+Benchee.Benchmark.Runner.collect_return_value/2                                        1   0.00      0    0.00
+Benchee.Benchmark.Runner.main_function/2                                               1   0.00      0    0.00
+Benchee.Benchmark.Runner.run_once/2                                                    1   0.00      0    0.00
+anonymous fn/2 in Benchee.Benchmark.Runner.main_function/2                             1   0.00      0    0.00
+Enum.each/2                                                                            1   0.00      0    0.00
+Map.take/2                                                                             1   0.00      0    0.00
+Benchee.Benchmark.BenchmarkConfig.from/1                                               1   0.00      1    1.00
+anonymous fn/2 in Benchee.Benchmark.BenchmarkConfig.__struct__/1                      12   0.00      1    0.08
+anonymous fn/2 in Benchee.Profile.run/4                                                1   0.00      1    1.00
+Map.take/3                                                                            13   0.00      1    0.08
+Enum.to_list/1                                                                     10000   0.26    335    0.03
+OpenApiSpex.Cast.cast/2                                                            10000   0.27    339    0.03
+Enum."-reduce/3-lists^foldl/2-0-"/3                                                10000   0.27    340    0.03
+OpenApiSpex.Cast.Object.check_min_properties/1                                     10000   0.27    342    0.03
+anonymous fn/2 in :elixir_compiler_2.__FILE__/1                                    10000   0.27    343    0.03
+Enum.filter_list/2                                                                 10000   0.27    344    0.03
+Enum.filter/2                                                                      10000   0.27    345    0.03
+Enum.flat_map/2                                                                    10000   0.27    347    0.03
+OpenApiSpex.Cast.Utils.check_required_fields/1                                     10000   0.27    347    0.03
+Keyword.get/2                                                                      10000   0.27    348    0.03
+:lists.reverse/1                                                                   10000   0.29    372    0.04
+OpenApiSpex.Cast.Object.handle_struct_value/1                                      10000   0.32    412    0.04
+OpenApiSpex.Cast.Object.check_unrecognized_properties/1                            10000   0.36    460    0.05
+Enum.reduce_range/5                                                                 5001   0.40    512    0.10
+OpenApiSpex.Cast.Object.to_struct/1                                                10000   0.41    528    0.05
+:erlang.--/2                                                                       10000   0.42    533    0.05
+OpenApiSpex.Cast.Object.check_max_properties/1                                     10000   0.42    539    0.05
+anonymous fn/3 in Enum.each/2                                                      10000   0.54    685    0.07
+OpenApiSpex.Cast.cast/4                                                            10000   0.54    691    0.07
+:sets.from_list/2                                                                  10000   0.59    751    0.08
+:lists.keyfind/3                                                                   20000   0.59    754    0.04
+OpenApiSpex.Cast.Object.cast_additional_properties/1                               10000   0.64    811    0.08
+OpenApiSpex.Cast.Object.cast_atom_keys/1                                           10000   0.72    921    0.09
+OpenApiSpex.Cast.Object.cast_properties/1                                          10000   0.72    921    0.09
+:maps.keys/1                                                                       20000   0.76    968    0.05
+OpenApiSpex.Cast.ok/1                                                              30000   0.77    988    0.03
+OpenApiSpex.Cast.Object.apply_default/2                                            30000   0.78    990    0.03
+MapSet.new/1                                                                       10000   0.80   1017    0.10
+OpenApiSpex.Cast.Object.resolve_schema_properties_references/1                     10000   0.80   1019    0.10
+MapSet.member?/2                                                                   30000   0.83   1053    0.04
+anonymous fn/3 in OpenApiSpex.Cast.Object.resolve_schema_properties_references/1   30000   0.83   1057    0.04
+:sets.is_element/2                                                                 30000   0.83   1057    0.04
+OpenApiSpex.Cast.Object.resolve_property_if_reference/3                            30000   0.97   1235    0.04
+OpenApiSpex.Cast.Object.apply_defaults/1                                           10000   0.98   1247    0.12
+Map.get/2                                                                          40000   1.09   1385    0.03
+Keyword.get/3                                                                      20000   1.10   1402    0.07
+:erlang.++/2                                                                       30000   1.23   1564    0.05
+:maps.from_keys/2                                                                  10000   1.24   1579    0.16
+Map.get/3                                                                          40000   1.27   1626    0.04
+OpenApiSpex.Cast.Object.get_additional_properties/2                                10000   1.33   1693    0.17
+:maps.iterator/1                                                                   50001   1.35   1728    0.03
+OpenApiSpex.Cast.Utils.check_required_fields/2                                     10000   1.35   1728    0.17
+:maps.iterator/2                                                                   50001   1.37   1745    0.03
+anonymous fn/3 in OpenApiSpex.Cast.Object.get_additional_properties/2              30000   1.60   2044    0.07
+String.Chars.Atom.to_string/1                                                      60000   1.60   2044    0.03
+:erts_internal.map_next/3                                                          50001   1.60   2046    0.04
+OpenApiSpex.Cast.Integer.cast/1                                                    30000   1.60   2046    0.07
+String.Chars.impl_for/1                                                            60000   1.61   2054    0.03
+OpenApiSpex.Cast.Integer.cast_integer/1                                            30000   1.64   2092    0.07
+anonymous fn/1 in OpenApiSpex.Cast.Object.get_additional_properties/2              30000   1.65   2102    0.07
+Enum.reduce/3                                                                      60001   1.77   2258    0.04
+anonymous fn/2 in OpenApiSpex.Cast.Object.cast_atom_keys/1                         30000   1.96   2503    0.08
+:erlang.atom_to_binary/2                                                           60000   2.00   2551    0.04
+anonymous fn/4 in OpenApiSpex.Cast.Object.cast_properties/1                        30000   2.09   2671    0.09
+:maps.next/1                                                                       50001   2.83   3612    0.07
+OpenApiSpex.Cast.Object.cast_property/2                                            30000   3.18   4054    0.14
+String.Chars.impl_for!/1                                                           60000   3.23   4116    0.07
+:erlang.atom_to_binary/1                                                           60000   3.30   4203    0.07
+OpenApiSpex.Cast.Object.cast/1                                                     10000   3.31   4218    0.42
+String.Chars.to_string/1                                                           60000   3.37   4304    0.07
+OpenApiSpex.Cast.cast/1                                                            40000   3.40   4341    0.11
+Enum.flat_map_list/2                                                               40000   3.50   4460    0.11
+:maps.fold/3                                                                       50001   3.96   5048    0.10
+:maps.try_next/2                                                                  150012   4.17   5316    0.04
+anonymous fn/4 in Enum.reduce/3                                                   150012   4.20   5351    0.04
+:maps.fold_1/4                                                                    200013  13.10  16702    0.08
